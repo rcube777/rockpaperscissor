@@ -3,9 +3,14 @@ let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
+const msgContainer = document.querySelector(".msg-container");
 
 const userScorePara = document.querySelector("#user-score");
 const compScorePara = document.querySelector("#comp-score");
+
+const newGameBtn = document.querySelector("#newgame");
+const gameContainer = document.querySelector(".newgame-container");
+
 
 const genCompChoice = () => {
     const options = ["rock", "paper", "scissor"];
@@ -17,6 +22,7 @@ const drawGame = () => {
     console.log ("game is draw");
     msg.innerText = "Game is draw. Play again"
     msg.style.backgroundColor = "#081B31";
+    reset ();
 
 }
 
@@ -27,6 +33,8 @@ const showWinner = (userWin, userChoice, compChoice) => {
         console.log("you win");
         msg.innerText = `you select ${userChoice} and Computer select ${compChoice} So, You win. Congratulations!!`;
         msg.style.backgroundColor = "green";
+        reset ();
+        
     }
     else {
         compScore++;
@@ -34,6 +42,8 @@ const showWinner = (userWin, userChoice, compChoice) => {
         console.log("you lost");
         msg.innerText = `you select ${userChoice} and Computer select ${compChoice} So, you lost the match`;
         msg.style.backgroundColor = "red";
+        reset ();
+
     }
 }
 
@@ -65,9 +75,29 @@ const playGame = (userChoice) => {
 
 }
 
+
+
 choices.forEach((choice) => {
     choice.addEventListener ("click", () => {
         const userChoice = choice.getAttribute("id");
         playGame (userChoice);
+        msgContainer.classList.remove("hide");
     })
 })
+const reset = () => {
+    gameContainer.classList.remove("hide");
+}
+
+const newGame = () => {
+    msgContainer.classList.add ("hide");
+    resetScore();
+}
+
+let resetScore = () => {
+    userScore =0;
+    compScore = 0;
+    userScorePara.innerText = userScore;
+    compScorePara.innerText = compScore;
+}
+
+newGameBtn.addEventListener("click", newGame);

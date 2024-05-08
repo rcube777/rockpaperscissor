@@ -58,5 +58,41 @@ img {
     padding: 1rem;
     border-radius: 1rem;
 }
+.newgame-container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
 
-   
+.hide {
+    display: none;
+}
+
+#newgame {
+    background-color: #081B31;
+    color: white;
+    display: inline;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+}
+
+
+@media only screen and (max-width:600px) {
+    #msg {
+        /* background-color: #081B31; */
+        color: rgb(255, 255, 255);
+    }
+    .choices {
+        display: flex;
+        flex-direction: column;
+    }
+    .msg-container {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .hide {
+        display: none;
+    }
+}
